@@ -1,6 +1,6 @@
 <?php
 
-namespace io42\ImageConvert;
+namespace io42\ImageConverter;
 
 /*
 | 
@@ -10,7 +10,7 @@ namespace io42\ImageConvert;
 |
 */
 
-class imageConvert {
+class ImageConverter {
 
     public function __construct(public string $source)
     {
