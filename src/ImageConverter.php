@@ -92,7 +92,7 @@ class ImageConverter {
         if($this->format == "image/jpeg") {
             $mogrify = "mogrify -resize $width"."x"."$height -quality $quality -format jpg $target\r\n";
             $this->debugInfo .= "$mogrify"; 
-            copy($source, $target);
+            copy($source, $target . $this->targetFormat);
             exec($mogrify);
         }
 
