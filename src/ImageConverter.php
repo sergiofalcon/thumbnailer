@@ -69,11 +69,6 @@ class imageConvert {
         return($this);
     }
     
-    public function grayscale(bool $grayscale = false) {
-        $this->grayscale = $grayscale;
-        return($this);
-    }
-
     public function addThumbnail(int $width, int $height, bool $mantainAspectRatio = true, int $quality = 85)
     {
         $this->numThumbnail++;
