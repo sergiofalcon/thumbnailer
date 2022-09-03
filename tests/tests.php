@@ -1,18 +1,17 @@
 <?php
 
-namespace io42\ImageConverter;
+namespace io42;
 
 require("../src/ImageConverter.php");
 
 $file = "puppy.jpg";
 $test = new ImageConverter($file);
-echo($test->fileFormat);
 
 /** 
  * 
  * Ejemplo: Creates 4 thumbnails with different dimensions and returns an array with their temporary names
  * 
- * $imagen->addThumbnail(1024,768)
+ * $test->addThumbnail(1024,768)
  *       ->addThumbnail(800,600)
  *       ->addThumbnail(400,100)
  *       ->addThumbnail(100,50)
@@ -20,11 +19,15 @@ echo($test->fileFormat);
  * 
 */
 
-$imagen->addThumbnail(1024,768)
+$test->addThumbnail(1024,768)
       ->addThumbnail(800,600)
       ->addThumbnail(400,100)
       ->addThumbnail(100,50)
       ->save();
+
+      print_r($test);
+
+
 
 #$imagen->addThumbnail(1024,768)->addThumbnail(800,600)->addThumbnail(400,100)->addThumbnail(100,50);
 

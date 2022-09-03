@@ -1,6 +1,6 @@
 <?php
 
-namespace io42\ImageConverter;
+namespace io42;
 
 /*
 | 
@@ -14,19 +14,21 @@ class ImageConverter {
 
     public function __construct(public string $source)
     {
-        $this->numThumbnail = 0;
-        $this->debugInfo = null;
+        $this->numThumbnails = 0;
+        $this->debugInfo = "";
+        $this->tmpDir = sys_get_temp_dir() . "/";
 
         if(!file_exists($source)) {
-            return("sergiofalcon/imageconvert - Fatal error: the specified file ($source) doesn't exists in that path.\r\n");
+            die("sergiofalcon/imageconvert - Fatal error: the specified file ($source) doesn't exists in that path.\r\n");
         } else {
             $this->source = realpath($source);
+            $this->fileName = basename($this->source);
             $this->target = $this->source . "-copy";
             $this->targetFormat = "jpg";
             copy($this->source, $this->target);
             $this->format = image_type_to_mime_type(exif_imagetype($this->source));
-            if($this->format != "image/jpeg" || $this->format != "image/png") {
-                die("sergiofalcon/imageconvert - Fatal error: image format of ($this->format) is not valid.");
+            if($this->format != "image/jpeg" && $this->format != "image/png") {
+                die("sergiofalcon/imageconvert - Fatal error: image format of $this->source ($this->format) is not valid.\r\n");
             }
             return($this);
         }
@@ -38,7 +40,7 @@ class ImageConverter {
             $this->targetFormat = "jpg";
         } else {
             echo("Invalid image format");
-            $this->debugInfo = "Format \"$format\" es not valid. Setted by default to \"$this->targetFormat\".";
+            $this->debugInfo = "Format \"$format\" is not valid. Setted by default to \"$this->targetFormat\".";
             $this->format = "jpg";
         }
     }
@@ -71,22 +73,39 @@ class ImageConverter {
     
     public function addThumbnail(int $width, int $height, bool $mantainAspectRatio = true, int $quality = 85)
     {
-        $this->numThumbnail++;
-        $this->thumbnails[$this->numThumbnail]['width'] = $width;
-        $this->thumbnails[$this->numThumbnail]['height'] = $height;
-        $this->thumbnails[$this->numThumbnail]['mantainAspectRatio'] = $mantainAspectRatio;
-        $this->thumbnails[$this->numThumbnail]['quality'] = $quality;
+        $randomString = substr(str_shuffle("abcd1234"), 0, 8);
+        $tmpName = $this->tmpDir . "tmp-" . $randomString . "-" . $this->numThumbnails . "-" . $width . "x" . $height; 
+        
+        $this->numThumbnails = $this->numThumbnails + 1;
+        $this->thumbnails["$this->numThumbnails"]['width'] = $width;
+        $this->thumbnails["$this->numThumbnails"]['height'] = $height;
+        $this->thumbnails["$this->numThumbnails"]['mantainAspectRatio'] = $mantainAspectRatio;
+        $this->thumbnails["$this->numThumbnails"]['quality'] = $quality;
+        $this->thumbnails["$this->numThumbnails"]['tmpName'] = $tmpName;
 
         return($this);
     }
 
-    public function compress($calidad)
+    public function convert($source, $target, int $width = 1024, int $height = 768, int $quality = 85)
     {
+
+        if($this->format == "image/jpeg") {
+            $mogrify = "mogrify -resize $width"."x"."$height -quality $quality -format jpg $target\r\n";
+            $this->debugInfo .= "$mogrify"; 
+            copy($source, $target);
+            exec($mogrify);
+        }
+
+        if($this->format == "image/webp") {
+            // Coming soon
+        }
 
     }
 
-    public function convert()
+    public function save()
     {
-        //exec("mogrify ");
+        foreach($this->thumbnails AS $thumbnail) {
+            self::convert($this->source, $thumbnail['tmpName'], $thumbnail['width'], $thumbnail['height'],  $thumbnail['quality']);
+        }
     }
 }
