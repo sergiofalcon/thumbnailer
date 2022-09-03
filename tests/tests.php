@@ -5,7 +5,7 @@ namespace io42;
 require("../src/ImageConverter.php");
 
 $file = "puppy.jpg";
-$test = new ImageConverter($file);
+$test = new Thumbnailer($file);
 
 /** 
  * 

@@ -1,6 +1,6 @@
 {
-  "name": "sergiofalcon/imageconverter",
-  "description": "Speed focused, Imagemagick & WebP powered PHP class designed to simply manipulate images and thumbnaisls on CRUDs",
+  "name": "sergiofalcon/thumbnailer",
+  "description": "Speed focused, Imagemagick & WebP powered PHP class designed to simply create thumbnails on CRUDs",
   "type": "library",
   "require": {
     "php": ">=7.0.0"

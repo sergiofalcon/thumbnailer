@@ -10,7 +10,7 @@ namespace io42;
 |
 */
 
-class ImageConverter {
+class Thumbnailer {
 
     public function __construct(public string $source)
     {
