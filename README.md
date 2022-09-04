@@ -29,4 +29,4 @@ $thumbnails->setFilePrefix("my-prefix")
 
 ## Thanks
 
-Thanks to Fernanda Nuso (https://unsplash.com/es/@fernandanuso) for the puppie pic used to test this library <3
+Thanks to Fernanda Nuso (https://unsplash.com/es/@fernandanuso) for the puppie pic used to test this library
