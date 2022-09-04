@@ -5,19 +5,19 @@ namespace io42;
 /*
 | 
 |--------------------------------------------------------------------------------------------
-| imageConvert Class by io42.com
+| Thumbnailer by Sergio Falcón (https://github.com/sergiofalcon)
 |--------------------------------------------------------------------------------------------
 |
 */
 
 class Thumbnailer {
 
-    public function __construct(public string $source)
+    public function __construct(public string $source, string $targetDir)
     {
 
         // Default values
-        $this->numThumbnails = 0;
-        $this->targetDir = $_SERVER['DOCUMENT_ROOT'] . "/imageconverter/tests/results/";
+        self::setTargetDir($targetDir);
+        $this->numThumbnails = 1;
         $this->filePrefix = substr(str_shuffle("abcdef1234567890"),0,8);
         $this->quality = 85;
         $this->targetFormat = "jpg";
@@ -25,7 +25,7 @@ class Thumbnailer {
 
         // Check if file exists and get image format
         if(!file_exists($source)) {
-            die("sergiofalcon/Thumbnailer - Fatal error: the specified file ($source) doesn't exists in that path.\r\n");
+            echo("Thumbnailer - Fatal error: the specified file ($source) doesn't exists in that path.\r\n");
         } else {
 
             $this->source = realpath($source);
@@ -33,7 +33,7 @@ class Thumbnailer {
             $this->format = image_type_to_mime_type(exif_imagetype($this->source));
             
             if($this->format != "image/jpeg" && $this->format != "image/png") {
-                echo("sergiofalcon/Thumbnailer - Fatal error: image format of $this->source ($this->format) is not valid.\r\n");
+                echo("Thumbnailer - Fatal error: image format of $this->source ($this->format) is not valid.\r\n");
             }
 
             return($this);
@@ -56,7 +56,7 @@ class Thumbnailer {
             $this->targetFormat = $format;
         } else {
             echo("Invalid image format");
-            self::debugLog("Format \"$format\" is not valid. Setted by default to \"$this->targetFormat\"");
+            self::debugLog("Thumbnailer: Format \"$format\" is not valid. Setted by default to \"$this->targetFormat\"");
             $this->format = "jpg";
         }
 
@@ -65,11 +65,6 @@ class Thumbnailer {
 
     public function setFilePrefix(string $filePrefix) {
         $this->filePrefix = $filePrefix;
-        return($this);
-    }
-
-    public function setHeight(int $height) {
-        $this->height = $height;
         return($this);
     }
 
@@ -84,15 +79,14 @@ class Thumbnailer {
     }
 
     public function setTargetDir(string $targetDir) {
-        $this->targetDir = $targetDir;
-        return($this);
+        if(is_dir($targetDir)) {
+            $this->targetDir = $targetDir;
+            return($this);
+        } else {
+            echo("Thumbnailer: $targetDir is not a valid directory");
+        }
     }
 
-    public function setWidth(int $width) {
-        $this->width = $width;
-        return($this);
-    }
-    
     /*
     |
     | addThumbnail($width, $height)
@@ -165,9 +159,9 @@ class Thumbnailer {
             self::convert($this->source, $thumbnail['tmpName'], $thumbnail['width'], $thumbnail['height'],  $thumbnail['quality']);
             
             if(file_exists($thumbnail['tmpName'])) {
-                echo(system("file $thumbnail[tmpName]"));
-                print_r(getimagesize($thumbnail['tmpName']));
+                
             }
         }
+        return((array) $this->thumbnails);
     }
 }

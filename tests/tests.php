@@ -7,54 +7,15 @@ require("../src/Thumbnailer.php");
 $file = "puppy.jpg";
 $test = new Thumbnailer($file);
 
-/** 
- * 
- * Ejemplo: Creates 4 thumbnails with different dimensions and returns an array with their temporary names
- * 
- * $test->addThumbnail(1024,768)
- *       ->addThumbnail(800,600)
- *       ->addThumbnail(400,100)
- *       ->addThumbnail(100,50)
- *       ->save();
- * 
-*/
-
-$test->setFilePrefix("perritoAdorable")
+$test->setFilePrefix("very-cute-dog", $_SERVER['DOCUMENT_ROOT'] . "/imageconverter/tests/results/")
       ->setFormat("jpg")
       ->setQuality(85)
       ->addThumbnail(1024,768)
-      ->addThumbnail(900,768)
-      ->addThumbnail(800,600)
-      ->addThumbnail(700,100)
-      ->addThumbnail(600,100)
-      ->addThumbnail(500,50)
-      ->addThumbnail(250,50)
-      ->addThumbnail(100,50)
-      ->addThumbnail(50,50)
+      ->addThumbnail(750,500)
+      ->addThumbnail(500,250)
+      ->addThumbnail(250,125)
+      ->addThumbnail(125,50)
+      ->addThumbnail(50,25)
       ->save();
 
-      //print_r($test['thumbnails']);
       print_r($test);
-
-#$imagen->addThumbnail(1024,768)->addThumbnail(800,600)->addThumbnail(400,100)->addThumbnail(100,50);
-
-/**
- * 
- * Ejemplo: Redimensiona una imagen a full HD a calidad 85 sin rotación
- * 
- * Como el formato no se ha especificado, se establece JPG por defecto
- * 
- *
- * $imagen->withWidth(1920)
- *       ->withHeight(1080)
- *       ->withQuality(85)
- *       ->withRotation(0);
- * 
- */
-
-#new imagen($origen,$destino);
-#$imagen->withWidth(1920)->withHeight(1080)->withQuality(85)->withRotation(0)->save();
-
-#print_r($prueba->thumbnails);
-#print_r($prueba->so#urce);
-#echo"\r\n";
