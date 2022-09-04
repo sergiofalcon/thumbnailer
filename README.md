@@ -1,12 +1,22 @@
 # PHP Thumbnailer 🎆
 
-## Speed first, Imagemagick &amp; WebP powered PHP class designed to simply manipulate images and thumbnails on PHP CRUDs, specially crafted to be used on Laravel projects as an alternative to intervention/image and GD Library manipulation.
+## A simplycity-first, speed focused, Imagemagick &amp; WebP powered PHP class designed to simply manipulate images and thumbnails on PHP CRUDs, specially crafted to be used on Laravel projects as an alternative to intervention/image and GD Library manipulation.
 
 The aim of this class is to be able to make multiple thumbnails of images quickly and easily, using ImageMagick and command line CWebP. 
 
 I preferred to use the command line versions rather than the PHP libraries themselves because I was looking for the best possible performance, and all the tests I did with the libraries didn't convince me, especially in the case of uploading dozens of images and having to make 4 or 5 thumbnails of each one. Therefore, it is important to keep in mind that we will need to have the "imagemagick" and "webp" packages installed and that their binaries can be executed by the system user of the web server.
 
 I created this mainly because I was tired of having to use external libraries or expensive SaSS to generate images that already had good compression ratios and passed through Lighthouse without problem.
+
+# Requirements
+
+- ImageMagick v6 (not tested on v7 yet) https://imagemagick.org/script/download.php.
+- WebP (https://developers.google.com/speed/webp/download).
+- Ability of calling system() on your PHP build.
+
+# Installation
+
+- ```composer require sergiofalcon/thumbnailer```
 
 # Use 
 
