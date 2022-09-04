@@ -64,19 +64,34 @@ You can add as many image variations as you like, bearing in mind that the more 
 Thumbnailer will _always_ create the thumbnails with the same aspect ratio of the original image, taking as a reference value the longest side of the image.
 
 ```
-$thumbnails->addThumbnail(1024,768)
-           ->addThumbnail(800,600)
-           ->addThumbnail(500,50)
-           ->addThumbnail(250,50)
-           ->addThumbnail(100,50)
-           ->addThumbnail(50,25)
+$thumbnails->addThumbnail(1024,768) // Suffix will be "-0"
+           ->addThumbnail(800,600)  // Suffix will be "-1"
+           ->addThumbnail(500,50)   // Suffix will be "-2"
+           ->addThumbnail(250,50)   // Suffix will be "-3"
+           ->addThumbnail(100,50)   // Suffix will be "-4"
+           ->addThumbnail(50,25)    // Suffix will be "-5"
 ```
 
 ## Step 4: Save your thumbnails
 
+The save() method will generate the thumbnails and return an array with the file location.
+
 ```
-$thumbnails->save();
+$locationInfo = $thumbnails->save();
 ```
+
+Will return an array with this structure
+```
+    [0] => Array
+        (
+            [width] => 1024
+            [height] => 768
+            [quality] => 85
+            [tmpName] => /var/www/vhosts/sergiofalcon.com/httpdocs/imageconverter/tests/results/very-cute-dog-1.webp
+        )
+```
+
+Once this is done, you can take the tmpName key from the array if you need to move the files to another storage type, folder or similar.
 
 ## Thanks and credits
 
