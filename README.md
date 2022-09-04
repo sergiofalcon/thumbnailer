@@ -37,7 +37,7 @@ _Important note: this class is designed to be used as a new object and not by st
 
 - _By default_, if you don't specify a format, the class will create the thumbnails as JPG files.
 
-- ```$thumbnails->setFormat("jpg");```
+- ```$thumbnails->setFormat("webp"); // Will set format to WebP```
 
 ### Specify thumbnail image quality with setQuality(int $quality)
 
@@ -45,7 +45,7 @@ _Important note: this class is designed to be used as a new object and not by st
 
 - _By default_, if you don't specify a quality, 85 will be used. WebP compression is always set to lossless.
 
-- ```$thumbnails->setQuality(70);```
+- ```$thumbnails->setQuality(70); // Will set quality to 70```
 
 ## Step 3: Add some thumbnail sizes to generate with addThumbnail(int $width, int $height)
 
