@@ -68,6 +68,6 @@ $thumbnails->addThumbnail(1024,768)
 $thumbnails->save();
 ```
 
-## Thanks
+## Thanks and credits
 
-Thanks to Fernanda Nuso (https://unsplash.com/es/@fernandanuso) for the puppie pic used to test this library
+- Fernanda Nuso (https://unsplash.com/es/@fernandanuso) for the adorable puppie pic used to test this library.
