@@ -31,3 +31,5 @@ print_r($test1);
       ->addThumbnail(125,50)
       ->addThumbnail(50,25)
       ->save();
+
+      print_r($test2);
