@@ -1,7 +1,7 @@
 # PHP Thumbnailer
 
-## Speed focused, Imagemagick &amp; WebP powered PHP class designed to simply manipulate images and thumbnails on PHP CRUDs
-## Specially crafted to used on your Laravel CRUDS as an alternative to intervention/image
+## Speed focused, Imagemagick &amp; WebP powered PHP class designed to simply manipulate images and thumbnails on PHP CRUDs.
+### Specially crafted to be used on Laravel projects as an alternative to intervention/image.
 
 The aim of this class is to be able to make multiple thumbnails of images quickly and easily, using ImageMagick and command line CWebP. 
 
@@ -24,7 +24,8 @@ $thumbnails->setFilePrefix("my-prefix")
            ->addThumbnail(250,50)
            ->addThumbnail(100,50)
            ->addThumbnail(50,50)
-           ->save();```
+           ->save();
+```
 
 ## Thanks
 
