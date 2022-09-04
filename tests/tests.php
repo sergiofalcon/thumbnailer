@@ -19,10 +19,18 @@ $test = new Thumbnailer($file);
  * 
 */
 
-$test->addThumbnail(1024,768)
+$test->setFilePrefix("perritoAdorable")
+      ->setFormat("jpg")
+      ->setQuality(85)
+      ->addThumbnail(1024,768)
+      ->addThumbnail(900,768)
       ->addThumbnail(800,600)
-      ->addThumbnail(400,100)
+      ->addThumbnail(700,100)
+      ->addThumbnail(600,100)
+      ->addThumbnail(500,50)
+      ->addThumbnail(250,50)
       ->addThumbnail(100,50)
+      ->addThumbnail(50,50)
       ->save();
 
       //print_r($test['thumbnails']);
