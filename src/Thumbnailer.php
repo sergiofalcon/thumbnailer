@@ -5,7 +5,7 @@ namespace io42;
 /*
 | 
 |--------------------------------------------------------------------------------------------
-| Thumbnailer by Sergio Falcón (https://github.com/sergiofalcon)
+| Thumbnailer by Sergio Falcón (https://github.com/sergiofalcon/thumbnailer)
 |--------------------------------------------------------------------------------------------
 |
 */
@@ -123,14 +123,17 @@ class Thumbnailer {
                         
             system("cp $source $target");
 
-            $mogrify = "mogrify -verbose -resize $width"."x"."$height -quality $this->quality -format jpg $target &";
+            $mogrify = "mogrify -verbose -resize $width"."x"."$height -quality $this->quality -format jpg $target 2>&1";
             self::debugLog("$mogrify");
 
-            system($mogrify);
+            self::debugLog(exec($mogrify));
         }
 
         if($this->targetFormat == "webp") {
             
+            if($height == $width) {
+                $height = 0;
+            }
             if($width > $height) { 
                 $height = 0;
             }
@@ -138,9 +141,9 @@ class Thumbnailer {
                 $width = 0;
             }
 
-            $cwebp = "cwebp -mt -resize $width $height -q $this->quality -lossless $source -o $target";
+            $cwebp = "cwebp -mt -resize $width $height -q $this->quality -lossless $source -o $target 2>&1";
             self::debugLog("$cwebp");
-            system($cwebp);
+            self::debugLog(exec($cwebp));
         }
 
     }
