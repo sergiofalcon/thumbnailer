@@ -11,21 +11,48 @@ Note: this class is designed to be used as a new object and not by static functi
 
 ## Use
 
+### Step 1: Instance a new thumbnailer object with 2 parameters*
+- The source file (can be a JPG or PNG, everything else will fail)
+- The target directory of your local filesystem (must exists before call save() method)
+
+```
+$thumbnails = new Thumbnailer();
+```
+
+### Step 2: Set some options
+
+Optional: Add your file prefix to generate your files with an speficied name pattern. The order of thumbnail generation is important because the class with append the number of iteration on as a file suffix.
+
+If you don't specify a prefix, filenames will match a pattern of a 8 random hexadecimal string like "abcd1234-1.jpg".
+
+```$thumbnails->setFilePrefix("my-prefix"); // Will generate files named like "my-prefix-01.jpg```
+
 ```
 $thumbnails->setFilePrefix("my-prefix")
            ->setFormat("jpg")
            ->setQuality(85)
-           ->addThumbnail(1024,768)
-           ->addThumbnail(900,768)
-           ->addThumbnail(800,600)
-           ->addThumbnail(700,100)
-           ->addThumbnail(600,100)
-           ->addThumbnail(500,50)
-           ->addThumbnail(250,50)
-           ->addThumbnail(100,50)
+           ->addThumbnail(50,50)
+```
+
+```
+$thumbnails->setFilePrefix("my-prefix")
+           ->setFormat("jpg")
+           ->setQuality(85)
            ->addThumbnail(50,50)
            ->save();
 ```
+
+# Step 3: Add some thumbnail sizes to generate
+
+```
+$thumbnails->addThumbnail(1024,768)
+           ->addThumbnail(800,600)
+           ->addThumbnail(500,50)
+           ->addThumbnail(250,50)
+           ->addThumbnail(100,50)
+           ->addThumbnail(50,25)
+```
+
 
 ## Thanks
 
