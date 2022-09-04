@@ -23,7 +23,7 @@ _Important note: this class is designed to be used as a new object and not by st
 
 ## Step 2 (Optional): Customize your thumbnails
 
-### Specify a file prefix
+### Specify a file prefix with setFilePrefix(string $prefix)
 
 - _Optional_: Add your file prefix to generate your files with an speficied name pattern. The order of thumbnail generation is important because the class with append the number of iteration on as a file suffix.
 
@@ -31,15 +31,15 @@ _Important note: this class is designed to be used as a new object and not by st
 
 - ```$thumbnails->setFilePrefix("my-prefix"); // Will generate files named like "my-prefix-01.jpg```
 
-### Specify an image format
+### Specify an image format with setFormat(string $format)
 
-- _Optional_: Specificy in which format you want to thumbnails. Only "jpg" and "webp" are allowed.
+- _Optional_: Specificy in which format you want to thumbnails. **Only "jpg" and "webp" are allowed**.
 
 - _By default_, if you don't specify a format, the class will create the thumbnails as JPG files.
 
 - ```$thumbnails->setFormat("jpg");```
 
-### Specify thumbnail image quality
+### Specify thumbnail image quality with setQuality(int $quality)
 
 - _Optional_: Specificy the JPEG or WebP quality of your thumbnails, from 1 to 100. 
 
@@ -47,7 +47,7 @@ _Important note: this class is designed to be used as a new object and not by st
 
 - ```$thumbnails->setQuality(70);```
 
-## Step 3: Add some thumbnail sizes to generate
+## Step 3: Add some thumbnail sizes to generate with addThumbnail(int $width, int $height)
 
 You can add as many image variations as you like, bearing in mind that the more you add, the longer the process takes and the greater the risk of timeout. If you are going to generate more than 20 thumbnails in each process, I advise you to raise the value of _max_execution_time_ in your _php.ini_.
 
