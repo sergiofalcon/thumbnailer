@@ -2,7 +2,7 @@
 
 namespace io42;
 
-require("../src/ImageConverter.php");
+require("../src/Thumbnailer.php");
 
 $file = "puppy.jpg";
 $test = new Thumbnailer($file);
@@ -25,9 +25,8 @@ $test->addThumbnail(1024,768)
       ->addThumbnail(100,50)
       ->save();
 
+      //print_r($test['thumbnails']);
       print_r($test);
-
-
 
 #$imagen->addThumbnail(1024,768)->addThumbnail(800,600)->addThumbnail(400,100)->addThumbnail(100,50);
 
