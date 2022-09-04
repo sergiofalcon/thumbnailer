@@ -51,7 +51,7 @@ _Important note: this class is designed to be used as a new object and not by st
 
 You can add as many image variations as you like, bearing in mind that the more you add, the longer the process takes and the greater the risk of timeout. If you are going to generate more than 20 thumbnails in each process, I advise you to raise the value of _max_execution_time_ in your _php.ini_.
 
-Thumbnailer will _always_ create the thumbnails with the same aspect ratio of the original image.
+Thumbnailer will _always_ create the thumbnails with the same aspect ratio of the original image, taking as a reference value the longest side of the image.
 
 ```
 $thumbnails->addThumbnail(1024,768)
