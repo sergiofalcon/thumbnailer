@@ -16,12 +16,12 @@ $test1->setFilePrefix("very-cute-dog")
       ->addThumbnail(500,250)
       ->addThumbnail(250,125)
       ->addThumbnail(125,50)
-      ->addThumbnail(50,25)
-      ->save();
+      ->addThumbnail(50,25);
 
-print_r($test1);
+$fileLocation1 = $test1->save();
+print_r($fileLocation1);
 
- $test2->setFilePrefix("very-cute-dog")
+$test2->setFilePrefix("very-cute-dog")
       ->setFormat("jpg")
       ->setQuality(85)
       ->addThumbnail(1024,768)
@@ -29,7 +29,7 @@ print_r($test1);
       ->addThumbnail(500,250)
       ->addThumbnail(250,125)
       ->addThumbnail(125,50)
-      ->addThumbnail(50,25)
-      ->save();
+      ->addThumbnail(50,25);
 
-      print_r($test2);
+$fileLocation2 = $test2->save();
+print_r($fileLocation2);

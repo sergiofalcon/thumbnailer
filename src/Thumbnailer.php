@@ -41,7 +41,9 @@ class Thumbnailer {
     }
 
     private function debugLog(string $string) {
-        $this->debugInfo .= $string . "\r\n";
+        $this->debugInfo .= "\r\n---------------------------------- \r\n";
+        $this->debugInfo .= "\r\n" . $string . "\r\n";
+        $this->debugInfo .= "\r\n---------------------------------- \r\n";
     }
 
     /*
@@ -126,7 +128,7 @@ class Thumbnailer {
             $mogrify = "mogrify -verbose -resize $width"."x"."$height -quality $this->quality -format jpg $target 2>&1";
             self::debugLog("$mogrify");
 
-            self::debugLog(exec($mogrify));
+            self::debugLog(`$mogrify`);
         }
 
         if($this->targetFormat == "webp") {
@@ -143,7 +145,7 @@ class Thumbnailer {
 
             $cwebp = "cwebp -mt -resize $width $height -q $this->quality -lossless $source -o $target 2>&1";
             self::debugLog("$cwebp");
-            self::debugLog(exec($cwebp));
+            self::debugLog(`$cwebp`);
         }
 
     }
@@ -165,6 +167,8 @@ class Thumbnailer {
                 
             }
         }
-        return((array) $this->thumbnails);
+        $output = ((array) $this);
+        $output = $output['thumbnails'];
+        return($output);
     }
 }
