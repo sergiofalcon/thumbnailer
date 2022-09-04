@@ -82,13 +82,13 @@ $locationInfo = $thumbnails->save();
 
 Will return an array with this structure
 ```
-    [0] => Array
-        (
-            [width] => 1024
-            [height] => 768
-            [quality] => 85
-            [tmpName] => /var/www/vhosts/sergiofalcon.com/httpdocs/imageconverter/tests/results/very-cute-dog-1.webp
-        )
+[0] => Array
+    (
+        [width] => 1024
+        [height] => 768
+        [quality] => 85
+        [tmpName] => /var/www/vhosts/sergiofalcon.com/httpdocs/imageconverter/tests/results/very-cute-dog-1.webp
+    )
 ```
 
 Once this is done, you can take the tmpName key from the array if you need to move the files to another storage type, folder or similar.
