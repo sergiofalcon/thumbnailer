@@ -143,7 +143,7 @@ class Thumbnailer {
                 $width = 0;
             }
 
-            $cwebp = "cwebp -mt -resize $width $height -q $this->quality -lossless $source -o $target 2>&1";
+            $cwebp = "cwebp -mt -resize $width $height -q $this->quality $source -o $target 2>&1";
             self::debugLog("$cwebp");
             self::debugLog(`$cwebp`);
         }
