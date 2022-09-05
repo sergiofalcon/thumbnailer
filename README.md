@@ -1,6 +1,6 @@
 # PHP Thumbnailer 🎆
 
-## A simplycity-first, speed focused, Imagemagick &amp; WebP powered PHP class designed to simply manipulate images and thumbnails on PHP CRUDs, specially crafted to be used on Laravel projects as an alternative to intervention/image and GD Library manipulation.
+## A simplicity-first, speed focused, Imagemagick &amp; WebP powered PHP class designed to simply manipulate images and thumbnails on PHP CRUDs, specially crafted to be used on Laravel projects as an alternative to intervention/image and GD Library manipulation.
 
 The aim of this class is to be able to make multiple thumbnails of images quickly and easily, using ImageMagick and command line CWebP. 
 
