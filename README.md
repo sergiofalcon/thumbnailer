@@ -85,7 +85,7 @@ Will return an array with this structure
         [width] => 1024
         [height] => 768
         [quality] => 85
-        [tmpName] => /var/www/vhosts/sergiofalcon.com/httpdocs/imageconverter/tests/results/very-cute-dog-1.webp
+        [tmpName] => /var/www/results/very-cute-dog-1.webp
     )
 ```
 
