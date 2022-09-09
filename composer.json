@@ -19,7 +19,7 @@
   "extra": {
     "laravel": {
       "providers": [
-        "Sergiofalcon\\thumbnailer\\ThumbnailerServiceProvider"
+        "Sergiofalcon\\Thumbnailer\\ThumbnailerServiceProvider"
       ]
     }
   },
