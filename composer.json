@@ -11,5 +11,17 @@
       "name": "Sergio Falcón"
     }
   ],
+  "autoload": {
+    "psr-4": {
+      "Vulturdev\\Cuentica\\": "src/"
+    }
+  },
+  "extra": {
+    "laravel": {
+      "providers": [
+        "Sergiofalcon\\thumbnailer\\ThumbnailerServiceProvider"
+      ]
+    }
+  },
   "minimum-stability": "stable"
 }
