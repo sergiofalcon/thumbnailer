@@ -1,6 +1,6 @@
 <?php
 
-namespace Sergiofalcon\Thumbnailer\Classes;
+namespace Sergiofalcon\Thumbnailer;
 
 use Illuminate\Support\ServiceProvider;
 

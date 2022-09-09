@@ -1,6 +1,6 @@
 <?php
 
-namespace Sergiofalcon;
+namespace Sergiofalcon\Thumbnailer;
 
 /*
 | 
